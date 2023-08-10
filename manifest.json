@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "YAST",
+    "version": "1.0",
+    "description": "Yet Another Selection Tool for downloading content with an easy selection mode",
+    "background": {
+        "scripts": ["popup.js"]
+    },
+    "content_scripts": [
+        {
+          "matches": ["*://*.google.com/*"],
+          "js": ["./main.js"],
+          "run_at": "document_end"
+        }
+      ],
+      "browser_action" : {
+            "default_popup": "index.html"
+      }
+  }
