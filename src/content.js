@@ -2,45 +2,49 @@ let globalImgs;
 
 function findImg (){
     console.log('Ran find image')
-    let imgs = document.getElementsByTagName("img");
-    const imgSrcs = [];
+    const pageNode = document.getElementsByClassName('rg_i Q4LuWd');
 
-    for (let i = 0; i < imgs.length; i++){
-        //if (imgs[i].src.endsWith('.png') || imgs[i].src.endsWith('.jpg') || imgs[i].src.endsWith('.jpeg')) {
-            imgSrcs.push(imgs[i].src);
-        //}
-        
+    
+    const imgSrcs = [];
+    console.log(pageNode);
+    for (let img of pageNode) {
+        //console.log(element)
+     
+        if (img.src !== '' || img.src.startsWith('data:image')) {
+            imgSrcs.push(img.src)
+        }
     }
 
     globalImgs = new Set(imgSrcs)
-   
+    
 
 }
 findImg();
-console.log(globalImgs);
+//console.log(globalImgs);
 
 
 function addImg(){
     // let imageBody = document.querySelector('images');
-
+    let multiple = 1;
     for (let value of globalImgs){
-        downloadImage(value);
-        console.log(value)
         
-        //let img = new Image();
-        //img.src = value;
-        //document.getElementById('body').appendChild(img);
+        setTimeout(()=>{
+            downloadImage(value);
+            console.log(value);
+        }, 1000 * multiple);
+        multiple++; 
     }
-
-
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message) {
       addImg();
+      console.log(globalImgs);
+      sendResponse(globalImgs);
     }})
 //addImg();
 
+//
 async function downloadImage(imageSrc) {
     const image = await fetch(imageSrc)
     const imageBlog = await image.blob()
@@ -48,7 +52,7 @@ async function downloadImage(imageSrc) {
     
     const link = document.createElement('a')
     link.href = imageURL
-    link.download = 'image file name here'
+    link.download = document.getElementsByClassName('og3lId')[0].value
     console.log('Image download')
     console.log(link);
     document.body.appendChild(link)

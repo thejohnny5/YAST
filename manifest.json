@@ -4,16 +4,17 @@
     "version": "1.0",
     "description": "Yet Another Selection Tool for downloading content with an easy selection mode",
     "background": {
-        "scripts": ["popup.js"]
+        "scripts": ["src/popup.js"]
     },
     "content_scripts": [
         {
           "matches": ["*://*.google.com/*"],
-          "js": ["./main.js"],
+          "js": ["./src/content.js"],
           "run_at": "document_end"
         }
       ],
       "browser_action" : {
-            "default_popup": "index.html"
+            "default_popup": "index.html",
+            "default_icon" : "src/assets/Cute-Dog-icon.png"
       }
   }
