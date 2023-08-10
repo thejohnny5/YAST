@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "YAST",
     "version": "1.0",
-    "description": "Yet Another Selection Tool for downloading content with an easy selection mode",
+    "description": "Yet Another Selection Tool for downloading content from google.",
     "background": {
         "scripts": ["src/popup.js"]
     },
