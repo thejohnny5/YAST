@@ -1,9 +1,20 @@
-body {
+#body {
     height:10rem;
     width: 10rem;
-    
+    border-radius: 3px;
+    background-color: #212529;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: #F8F9FA;
 }
 
 #test_button {
-    background-color: red;
+    background-color: #F8F9FA;
+    border-radius: 5px;
+    color: #212529;
 }

@@ -25,7 +25,7 @@ const updateTags = setOfImgs => {
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message) {
-      console.log('received')
+      //console.log('received')
       
     }
   });
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var btn = document.getElementById('test_button');
     btn.addEventListener('click', function() {
         sendMessageToContentScript({"action":"clicked"})
-        alert("button clicked");
+        alert("Let the download begin!");
     });
 });
 
